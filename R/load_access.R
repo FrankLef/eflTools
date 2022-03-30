@@ -11,14 +11,10 @@
 #' and qry_name is the query name in the db
 #' @param env the environment where the data will be located
 #'
+#' @importFrom RODBC odbcConnectAccess2007 odbcCloseAll sqlQuery
+#'
 #' @return nb of queries processed
 #' @export
-#'
-#' @examples
-#' load_access(
-#'   dir = system.file("extdata", package = "eflTools"),
-#'   db = "db_MsAccess.accdb",
-#'   qries = c("df_clients" = "tbl_clients", "df_vendors" = "tbl_vendors"))
 load_access <- function(dir = getwd(), db = NULL, qries = NULL, env = .GlobalEnv)
   {
   checkmate::assertDirectoryExists(dir)

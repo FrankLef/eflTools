@@ -26,9 +26,3 @@ Load data from an MS Access db
 \details{
 Extract the data from a local MS Access database using a list of queries.
 }
-\examples{
-load_access(
-  dir = system.file("extdata", package = "eflTools"),
-  db = "db_MsAccess.accdb",
-  qries = c("df_clients" = "tbl_clients", "df_vendors" = "tbl_vendors"))
-}
