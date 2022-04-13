@@ -19,5 +19,9 @@ Imports:
     checkmate,
     cli,
     crayon,
+    dplyr,
+    readxl,
     rlang,
-    RODBC
+    RODBC,
+    tidyr,
+    tidyselect
