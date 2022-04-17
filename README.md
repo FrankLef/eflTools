@@ -9,7 +9,7 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-eflTools is a set of tools used FL when ddoing R projects.
+eflTools is a set of tools used FL when doing R projects.
 
 ## Installation
 
