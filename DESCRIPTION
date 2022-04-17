@@ -1,18 +1,16 @@
 Package: eflTools
 Type: Package
-Title: What the Package Does (Title Case)
+Title: General Tools Used by FL
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Authors@R: 
+    person("François", "Lefebvre", , "flefebvre01@hotmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: General tools used by FL. Functions to load data from MS Access,
+    used in conjunction with ProjectTemplate and other miscellanuous tasks.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
 Imports: 
     assertthat,
     beepr,
@@ -25,3 +23,6 @@ Imports:
     RODBC,
     tidyr,
     tidyselect
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
