@@ -1,7 +1,7 @@
 
 
 test_that("input errors", {
-  a_file <- file.path(getwd(), "wrong.xls")
+  a_file <- file.path(getwd(), "wrong.xlsx")
   rgx <- "Assertion on 'file' failed"
   expect_error(gather_acctg_tags(file = a_file), regexp = rgx)
 })
