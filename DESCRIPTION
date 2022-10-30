@@ -10,7 +10,7 @@ Description: General tools used by FL. Functions to load data from MS Access,
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Imports: 
     assertthat,
     beepr,
