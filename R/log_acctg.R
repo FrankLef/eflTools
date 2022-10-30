@@ -8,7 +8,7 @@
 #' by the base.
 #'
 #' @param x Numerical vector.
-#' @param base Positive number >= 2.
+#' @param base Positive number >= 2. Default value is 10.
 #'
 #' @return Numeric vector.
 #' @export

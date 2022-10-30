@@ -9,7 +9,7 @@ log_acctg(x, base = 10L)
 \arguments{
 \item{x}{Numerical vector.}
 
-\item{base}{Positive number >= 2.}
+\item{base}{Positive number >= 2. Default value is 10.}
 }
 \value{
 Numeric vector.
