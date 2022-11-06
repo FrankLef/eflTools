@@ -72,10 +72,9 @@ init_roles <- function(data, formula, id) {
 #' @return Object of class \emph{bobj}.
 #' @export
 validate_bobj <- function(obj) {
-  checkmate::assert_class(obj, "bobj")
-  checkmate::assert_names(x = c(all.vars(obj$formula), obj$id),
+  checkmate::check_class(obj, "bobj")
+  checkmate::check_names(x = c(all.vars(obj$formula), obj$id),
                subset.of = names(obj$data))
-  TRUE
 }
 
 #' Create a Business Object
