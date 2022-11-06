@@ -51,6 +51,6 @@ exp_acctg <- function(x, base = 10L) {
   checkmate::assert_numeric(x)
   checkmate::assert_number(base, lower = 2, finite = TRUE)
 
-  y <- base ^ abs(x)
-  ifelse(y >= base, sign(x) * y, x * base)
+  y <- abs(x)
+  ifelse(y >= 1L, sign(x) * base ^ y, x * base)
 }

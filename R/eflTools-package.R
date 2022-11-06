@@ -11,6 +11,7 @@
 #' @importFrom rlang .data
 #' @importFrom dplyr %>% count group_by mutate summarize filter pull relocate
 #' ungroup pull near across slice bind_cols bind_rows inner_join distinct
+#' @importFrom formula.tools lhs.vars rhs.vars
 #'
 #' @keywords internal
 "_PACKAGE"
