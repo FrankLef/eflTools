@@ -88,14 +88,14 @@ test_that("get/set roles.bobj", {
 
 test_that("get/set info.bobj", {
   bobj_test <- make_bobj()
-  out <- get_info(bobj_test$full, name = "clrs")
-  target <- bobj_test$full$info$clrs
+  out <- get_info(bobj_test$full, name = "colors")
+  target <- bobj_test$full$info$colors
   expect_identical(out, target)
 
   obj <- bobj_test$full
-  new <- c(bobj_test$full$info$clrs, "new" = "black")
-  out <- set_info(obj, name = "clrs", value = new)
-  expect_identical(out$info$clrs, new)
+  new <- c(bobj_test$full$info$colors, "new" = "black")
+  out <- set_info(obj, name = "colors", value = new)
+  expect_identical(out$info$colors, new)
 })
 
 

@@ -14,7 +14,7 @@ make_bobj <- function() {
       role = c("outcome", "predictor", "predictor", "predictor", "id"),
       info = NA_character_),
     info = list(
-      clrs = c("1" = "red", "2" = "blue", "3" = "yellow")),
+      colors = c("1" = "red", "2" = "blue", "3" = "yellow")),
     bag = list(
       clusters = data.frame(
         "clust" = 1:5,
