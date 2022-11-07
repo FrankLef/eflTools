@@ -100,7 +100,7 @@ print.bobj <- function(x, ...) {
   msg <- paste("data: %s", "formula: %s variables", "id: %s",
                "info: %s", "bag: %s",
                sep = "\n")
-  msg <- sprintf(msg,
+  msg <- sprintf(paste0(msg, "\n"),
                  toString(dim(x$data)),
                  length(all.vars(x$formula)),
                  x$id,
