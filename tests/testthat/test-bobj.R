@@ -54,6 +54,12 @@ test_that("bobj", {
   expect_identical(out, target)
 })
 
+test_that("get_data.bobj: TypeError", {
+  bobj_test <- make_bobj()
+  out <- bobj_test$specs$data
+  expect_error(get_data(out), class = "TypeError")
+})
+
 test_that("get_data.bobj", {
   bobj_test <- make_bobj()
   out <- get_data(bobj_test$plain)
@@ -61,11 +67,27 @@ test_that("get_data.bobj", {
   expect_identical(out, target)
 })
 
+test_that("set_data.bobj", {
+  bobj_test <- make_bobj()
+  df <- bobj_test$specs$data
+  out <- eflTools::set_data(x = bobj_test$plain, data = df)
+  target <- bobj_test$plain$data
+  expect_identical(out$data, target)
+})
+
 test_that("get_formula.bobj", {
   bobj_test <- make_bobj()
   out <- get_formula(bobj_test$plain)
   target <- bobj_test$plain$formula
   expect_identical(out, target)
+})
+
+test_that("set_formula.bobj", {
+  bobj_test <- make_bobj()
+  frml <- bobj_test$specs$formula
+  out <- eflTools::set_formula(x = bobj_test$plain, formula = frml)
+  target <- bobj_test$plain$formula
+  expect_identical(out$formula, target)
 })
 
 test_that("get/set roles.bobj", {

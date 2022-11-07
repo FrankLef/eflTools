@@ -120,6 +120,18 @@ get_data.bobj <- function(x) {
   x$data
 }
 
+#' Set Data from a Business Object
+#'
+#' @param x Object of class \emph{bobj}.
+#' @param data Dataframe.
+#'
+#' @return Data from an object of class \emph{bobj}.
+#' @export
+set_data.bobj <- function(x, data) {
+  x$data <- data
+  x
+}
+
 #' Get Formula from a Business Object
 #'
 #' @param x Object of class \emph{bobj}.
@@ -128,6 +140,18 @@ get_data.bobj <- function(x) {
 #' @export
 get_formula.bobj <- function(x) {
   x$formula
+}
+
+#' Set Formula from a Business Object
+#'
+#' @param x Object of class \emph{bobj}.
+#' @param formula Formula.
+#'
+#' @return Data from an object of class \emph{bobj}.
+#' @export
+set_formula.bobj <- function(x, formula) {
+  x$formula <- formula
+  x
 }
 
 #' Get Roles from a Business Object

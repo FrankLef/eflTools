@@ -12,5 +12,5 @@ test_that("Hello returns a string invisibly",
 
 test_that("Hello returns an error",
           {
-            expect_error(object = hello("wrong"), class = "hello_error")
+            expect_error(object = hello("wrong"), class = "ValueError")
           })

@@ -16,7 +16,7 @@ hello <- function(msg = "Hello, world!") {
     msg <- paste(msg_head, rlang::format_error_bullets(msg_body), sep = "\n")
     rlang::abort(
       message = msg,
-      class = "hello_error")
+      class = "ValueError")
   }
   invisible(msg)
 }
