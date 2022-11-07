@@ -38,7 +38,7 @@ init_roles <- function(data, formula, id) {
 
   # get the types
   types <- sapply(X = vars, FUN = function(x) {
-    y <- data[, x]
+    y <- data[, x, drop = TRUE]
     if(is.character(y) | is.factor(y)) {
       out <- "nominal"
     } else if (is.numeric(y)) {
