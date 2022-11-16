@@ -2,7 +2,7 @@
 % Please edit documentation in R/bobj.R
 \name{bobj}
 \alias{bobj}
-\title{Create a Business Object}
+\title{Create a Business Object of class \code{bobj}}
 \usage{
 bobj(data, formula, id)
 }
@@ -17,5 +17,5 @@ bobj(data, formula, id)
 Object of class \emph{bobj}.
 }
 \description{
-Create a Business Object
+Create a Business Object of class \code{bobj}
 }

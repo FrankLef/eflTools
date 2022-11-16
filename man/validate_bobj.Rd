@@ -2,7 +2,7 @@
 % Please edit documentation in R/bobj.R
 \name{validate_bobj}
 \alias{validate_bobj}
-\title{Validate Business Object}
+\title{Validate Business Object of class \code{bobj}}
 \usage{
 validate_bobj(obj)
 }
@@ -13,5 +13,5 @@ validate_bobj(obj)
 Object of class \emph{bobj}.
 }
 \description{
-Validate Business Object
+Validate Business Object of class \code{bobj}
 }

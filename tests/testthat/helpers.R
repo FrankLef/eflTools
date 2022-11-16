@@ -40,3 +40,41 @@ make_bobj <- function() {
     class = "bobj")
   list("specs" = specs, "plain" = plain, "full" = full)
 }
+
+make_xprts <- function() {
+
+  ggp <- ggplot2::ggplot(iris,
+                         ggplot2::aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+    ggplot2::geom_point()
+  ply <- plotly::plot_ly(data = iris, x = ~Sepal.Length, y = ~Petal.Length, color = ~Species) |>
+    plotly::add_markers()
+  gt <- iris |>
+    group_by(Species) |>
+    summarize(Sepal.mean = mean(Sepal.Length),
+              Petal.mean = mean(Petal.Length)) |>
+    gt::gt(rowname_col = "Species")
+  class_df <- data.frame(
+    "name" = c("ggp_iris", "gt_iris", "ply_iris"),
+    "class" = c("ggplot", "gt", "plotly"),
+    row.names = NULL) |>
+    dplyr::arrange(name)
+
+  specs <- list(
+    "ggp_iris" = ggp,
+    "ply_iris" = ply,
+    "gt_iris" = gt,
+    "class_df" = class_df)
+
+  plain <- structure(
+    list("bag" = list()),
+    class = "xprts")
+
+  full <- structure(
+    list(
+      "bag" = list("ggp_iris" = specs$ggp,
+                   "ply_iris" = specs$ply,
+                   "gt_iris" = specs$gt)),
+    class = "xprts")
+
+  list("specs" = specs, "plain" = plain, "full" = full)
+}

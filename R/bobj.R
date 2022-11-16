@@ -1,4 +1,4 @@
-#' Create New Business Object
+#' Create New Business Object of class \code{bobj}
 #'
 #' @param data Dataframe.
 #' @param formula Formula of business model.
@@ -65,7 +65,7 @@ init_roles <- function(data, formula, id) {
   out
 }
 
-#' Validate Business Object
+#' Validate Business Object of class \code{bobj}
 #'
 #' @param obj Object of class \emph{bobj}.
 #'
@@ -77,7 +77,7 @@ validate_bobj <- function(obj) {
                subset.of = names(obj$data))
 }
 
-#' Create a Business Object
+#' Create a Business Object of class \code{bobj}
 #'
 #' @inheritParams new_bobj
 #'
@@ -89,7 +89,7 @@ bobj <- function(data, formula, id) {
   me
 }
 
-#' Print a Business Object
+#' Print a Business Object oc lass \code{bobj}
 #'
 #' @param x Object of class \emph{bobj}.
 #' @param ... Further arguments passed to or from other methods.
