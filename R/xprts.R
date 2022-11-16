@@ -251,12 +251,10 @@ xprt_all.xprts <- function(obj, path = getwd(), is_xprt = FALSE) {
   df <- xprt_classes(obj)
   n <- nrow(df)
 
-  print(df)
-
-  msg <- sprintf("Exporting %d objects\U2026", n)
-  cat(msg_style(msg), "\n")
-
   if (is_xprt) {
+    msg <- sprintf("Exporting %d objects\U2026", n)
+    cat(msg_style(msg), "\n")
+
     eflTools::xprt_ggplot(obj, path = path)
     eflTools::xprt_plotly(obj, path = path)
     eflTools::xprt_gt(obj, path = path)
