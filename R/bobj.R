@@ -43,6 +43,8 @@ init_roles <- function(data, formula, id) {
       out <- "nominal"
     } else if (is.numeric(y)) {
       out <- "numeric"
+    } else if (inherits(y, c("POSIXt", "Date"))) {
+      out <- "datetime"
     } else {
       msg <- sprintf("The type of %s could not be found", x)
       stop(msg)}
