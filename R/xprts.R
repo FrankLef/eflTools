@@ -122,6 +122,7 @@ xprt_classes.xprts <- function(obj) {
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #' @param width Width of plot.
 #' @param height Height of plot.
 #' @param units UOM used for width and height.
@@ -130,8 +131,8 @@ xprt_classes.xprts <- function(obj) {
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_ggplot.xprts <- function(obj, path = getwd(),
-                        width = height * 16/9, height = 20, units = "cm") {
+xprt_ggplot.xprts <- function(obj, path = getwd(), verbose = FALSE,
+                              width = height * 16/9, height = 20, units = "cm") {
   checkmate::assert_directory_exists(path)
 
   msg_style <- cli::combine_ansi_styles(cli::col_blue)
@@ -142,8 +143,10 @@ xprt_ggplot.xprts <- function(obj, path = getwd(),
 
   if (n) {
     for (x in df$name) {
-      msg <- sprintf("Exporting %s", x)
-      cat(msg_style(msg), "\n")
+      if (verbose) {
+        msg <- sprintf("Exporting %s", x)
+        cat(msg_style(msg), "\n")
+      }
       a_file <- file.path(path, paste(x, "png", sep = "."))
       ggplot2::ggsave(filename = a_file, plot = obj$bag[[x]],
                       width = width, height = height, units = units)
@@ -161,12 +164,13 @@ xprt_ggplot.xprts <- function(obj, path = getwd(),
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #'
 #' @importFrom qs qsave
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_plotly.xprts <- function(obj, path = getwd()) {
+xprt_plotly.xprts <- function(obj, path = getwd(), verbose = FALSE) {
   checkmate::assert_directory_exists(path)
 
   msg_style <- cli::combine_ansi_styles(cli::col_blue)
@@ -177,8 +181,10 @@ xprt_plotly.xprts <- function(obj, path = getwd()) {
 
   if (n) {
     for (x in df$name) {
-      msg <- sprintf("Exporting %s", x)
-      cat(msg_style(msg), "\n")
+      if (verbose) {
+        msg <- sprintf("Exporting %s", x)
+        cat(msg_style(msg), "\n")
+      }
       a_file <- file.path(path, paste(x, "qs", sep = "."))
       qs::qsave(x = obj$bag[[x]], file = a_file)
     }
@@ -196,6 +202,7 @@ xprt_plotly.xprts <- function(obj, path = getwd()) {
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #' @param inline_css See \code{gt::gtsave}. Must absolutely be set to TRUE
 #'  to include the gt table in a markdown document. Don't touch it unless you
 #'  know what you are doing.
@@ -204,7 +211,7 @@ xprt_plotly.xprts <- function(obj, path = getwd()) {
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_gt.xprts <- function(obj, path = getwd(), inline_css = TRUE) {
+xprt_gt.xprts <- function(obj, path = getwd(), verbose = FALSE, inline_css = TRUE) {
   checkmate::assert_directory_exists(path)
 
   msg_style <- cli::combine_ansi_styles(cli::col_blue)
@@ -215,8 +222,10 @@ xprt_gt.xprts <- function(obj, path = getwd(), inline_css = TRUE) {
 
   if (n) {
     for (x in df$name) {
-      msg <- sprintf("Exporting %s", x)
-      cat(msg_style(msg), "\n")
+      if (verbose) {
+        msg <- sprintf("Exporting %s", x)
+        cat(msg_style(msg), "\n")
+        }
       a_file <- paste(x, "html", sep = ".")
       # IMPORTANT: Must have inline_css = TRUE to work properly
       #           with rmarkdown. Otherwise huge output files are created.
@@ -239,12 +248,14 @@ xprt_gt.xprts <- function(obj, path = getwd(), inline_css = TRUE) {
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path for exported file.
 #' @param is_xprt TRUE = Export objects, FALSE = Don't export (default).
+#' @param verbose TRUE = inform on every exported object.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_all.xprts <- function(obj, path = getwd(), is_xprt = FALSE) {
+xprt_all.xprts <- function(obj, path = getwd(), is_xprt = FALSE, verbose = FALSE) {
   checkmate::assert_directory_exists(path)
   checkmate::assert_flag(is_xprt)
+  checkmate::assert_flag(verbose)
 
   msg_style <- cli::combine_ansi_styles(cli::col_green)
 
@@ -252,12 +263,13 @@ xprt_all.xprts <- function(obj, path = getwd(), is_xprt = FALSE) {
   n <- nrow(df)
 
   if (is_xprt) {
-    msg <- sprintf("Exporting %d objects\U2026", n)
-    cat(msg_style(msg), "\n")
+    if (verbose) {
+      msg <- sprintf("Exporting %d objects\U2026", n)
+      cat(msg_style(msg), "\n")}
 
-    eflTools::xprt_ggplot(obj, path = path)
-    eflTools::xprt_plotly(obj, path = path)
-    eflTools::xprt_gt(obj, path = path)
+    eflTools::xprt_ggplot(obj, path = path, verbose = verbose)
+    eflTools::xprt_plotly(obj, path = path,verbose = verbose)
+    eflTools::xprt_gt(obj, path = path, verbose = verbose)
 
     msg <- sprintf("%d objects exported.", n)
   } else {

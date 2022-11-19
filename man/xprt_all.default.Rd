@@ -4,7 +4,7 @@
 \alias{xprt_all.default}
 \title{Export all objects from Export Object of class \code{xprts} - Default}
 \usage{
-\method{xprt_all}{default}(obj, path, is_xprt)
+\method{xprt_all}{default}(obj, path, is_xprt, verbose)
 }
 \arguments{
 \item{obj}{Object of class \emph{xprts}.}
@@ -12,6 +12,8 @@
 \item{path}{Path for exported file.}
 
 \item{is_xprt}{TRUE = Export objects, FALSE = Don't export.}
+
+\item{verbose}{TRUE = inform on every exported object.}
 }
 \value{
 \code{obj} invisibly.

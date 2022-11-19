@@ -4,12 +4,14 @@
 \alias{xprt_gt.xprts}
 \title{Save GT to HTML}
 \usage{
-\method{xprt_gt}{xprts}(obj, path = getwd(), inline_css = TRUE)
+\method{xprt_gt}{xprts}(obj, path = getwd(), verbose = FALSE, inline_css = TRUE)
 }
 \arguments{
 \item{obj}{Object of class \emph{xprts}.}
 
 \item{path}{Path used for file.}
+
+\item{verbose}{TRUE = inform on every exported object.}
 
 \item{inline_css}{See \code{gt::gtsave}. Must absolutely be set to TRUE
 to include the gt table in a markdown document. Don't touch it unless you

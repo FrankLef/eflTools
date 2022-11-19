@@ -7,6 +7,7 @@
 \method{xprt_ggplot}{xprts}(
   obj,
   path = getwd(),
+  verbose = FALSE,
   width = height * 16/9,
   height = 20,
   units = "cm"
@@ -16,6 +17,8 @@
 \item{obj}{Object of class \emph{xprts}.}
 
 \item{path}{Path used for file.}
+
+\item{verbose}{TRUE = inform on every exported object.}
 
 \item{width}{Width of plot.}
 

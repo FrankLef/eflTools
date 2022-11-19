@@ -4,12 +4,14 @@
 \alias{xprt_ggplot.default}
 \title{Save GGPlot to PNG}
 \usage{
-\method{xprt_ggplot}{default}(obj, path, width = height, height, units)
+\method{xprt_ggplot}{default}(obj, path, verbose, width = height, height, units)
 }
 \arguments{
 \item{obj}{Object of class \emph{xprts}.}
 
 \item{path}{Path used for file.}
+
+\item{verbose}{TRUE = inform on every exported object.}
 
 \item{width}{Width of plot.}
 

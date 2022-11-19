@@ -4,12 +4,14 @@
 \alias{xprt_plotly.xprts}
 \title{Save Plotly to QS}
 \usage{
-\method{xprt_plotly}{xprts}(obj, path = getwd())
+\method{xprt_plotly}{xprts}(obj, path = getwd(), verbose = FALSE)
 }
 \arguments{
 \item{obj}{Object of class \emph{xprts}.}
 
 \item{path}{Path used for file.}
+
+\item{verbose}{TRUE = inform on every exported object.}
 }
 \value{
 \code{obj} invisibly.

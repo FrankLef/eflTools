@@ -4,7 +4,7 @@
 \alias{xprt_all.xprts}
 \title{Export all objects from Export Object of class \code{xprts}}
 \usage{
-\method{xprt_all}{xprts}(obj, path = getwd(), is_xprt = FALSE)
+\method{xprt_all}{xprts}(obj, path = getwd(), is_xprt = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{obj}{Object of class \emph{xprts}.}
@@ -12,6 +12,8 @@
 \item{path}{Path for exported file.}
 
 \item{is_xprt}{TRUE = Export objects, FALSE = Don't export (default).}
+
+\item{verbose}{TRUE = inform on every exported object.}
 }
 \value{
 \code{obj} invisibly.

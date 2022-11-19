@@ -242,13 +242,14 @@ xprt_classes.default <- function(obj){
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #' @param width Width of plot.
 #' @param height Height of plot.
 #' @param units UOM used for width and height.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_ggplot <- function(obj, path,width = height, height, units) {
+xprt_ggplot <- function(obj, path, verbose, width = height, height, units) {
   UseMethod("xprt_ggplot")
 }
 
@@ -256,13 +257,14 @@ xprt_ggplot <- function(obj, path,width = height, height, units) {
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #' @param width Width of plot.
 #' @param height Height of plot.
 #' @param units UOM used for width and height.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_ggplot.default <- function(obj, path,width = height, height, units){
+xprt_ggplot.default <- function(obj, path, verbose, width = height, height, units){
   msg_head <- cli::col_yellow(sprintf("No get_data() for class %s", class(obj)))
   msg_body <- c("x" = sprintf("Invalid class: %s", class(obj)))
   msg <- paste(msg_head, rlang::format_error_bullets(msg_body), sep = "\n")
@@ -275,11 +277,12 @@ xprt_ggplot.default <- function(obj, path,width = height, height, units){
 #' Save Plotly to QS
 #'
 #' @param obj Object of class \emph{xprts}.
+#' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #'
 #' @return \code{obj} invisibly.
-#' @param path Path used for file.
 #' @export
-xprt_plotly <- function(obj, path) {
+xprt_plotly <- function(obj, path, verbose) {
   UseMethod("xprt_plotly")
 }
 
@@ -287,10 +290,11 @@ xprt_plotly <- function(obj, path) {
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_plotly.default <- function(obj, path){
+xprt_plotly.default <- function(obj, path, verbose){
   msg_head <- cli::col_yellow(sprintf("No get_data() for class %s", class(obj)))
   msg_body <- c("x" = sprintf("Invalid class: %s", class(obj)))
   msg <- paste(msg_head, rlang::format_error_bullets(msg_body), sep = "\n")
@@ -304,13 +308,14 @@ xprt_plotly.default <- function(obj, path){
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #' @param inline_css See \code{gt::gtsave}. Must absolutely be set to TRUE
 #'  to include the gt table in a markdown document. Don't touch it unless you
 #'  know what you are doing.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_gt <- function(obj, path, inline_css) {
+xprt_gt <- function(obj, path, verbose, inline_css) {
   UseMethod("xprt_gt")
 }
 
@@ -318,13 +323,14 @@ xprt_gt <- function(obj, path, inline_css) {
 #'
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path used for file.
+#' @param verbose TRUE = inform on every exported object.
 #' @param inline_css See \code{gt::gtsave}. Must absolutely be set to TRUE
 #'  to include the gt table in a markdown document. Don't touch it unless you
 #'  know what you are doing.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_gt.default <- function(obj, path, inline_css){
+xprt_gt.default <- function(obj, path, verbose, inline_css){
   msg_head <- cli::col_yellow(sprintf("No get_data() for class %s", class(obj)))
   msg_body <- c("x" = sprintf("Invalid class: %s", class(obj)))
   msg <- paste(msg_head, rlang::format_error_bullets(msg_body), sep = "\n")
@@ -339,10 +345,11 @@ xprt_gt.default <- function(obj, path, inline_css){
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path for exported file.
 #' @param is_xprt TRUE = Export objects, FALSE = Don't export.
+#' @param verbose TRUE = inform on every exported object.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_all <- function(obj, path, is_xprt) {
+xprt_all <- function(obj, path, is_xprt, verbose) {
   UseMethod("xprt_all")
 }
 
@@ -351,10 +358,11 @@ xprt_all <- function(obj, path, is_xprt) {
 #' @param obj Object of class \emph{xprts}.
 #' @param path Path for exported file.
 #' @param is_xprt TRUE = Export objects, FALSE = Don't export.
+#' @param verbose TRUE = inform on every exported object.
 #'
 #' @return \code{obj} invisibly.
 #' @export
-xprt_all.default <- function(obj, path, is_xprt){
+xprt_all.default <- function(obj, path, is_xprt, verbose){
   msg_head <- cli::col_yellow(sprintf("No get_data() for class %s", class(obj)))
   msg_body <- c("x" = sprintf("Invalid class: %s", class(obj)))
   msg <- paste(msg_head, rlang::format_error_bullets(msg_body), sep = "\n")
