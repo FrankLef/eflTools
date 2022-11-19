@@ -263,9 +263,8 @@ xprt_all.xprts <- function(obj, path = getwd(), is_xprt = FALSE, verbose = FALSE
   n <- nrow(df)
 
   if (is_xprt) {
-    if (verbose) {
-      msg <- sprintf("Exporting %d objects\U2026", n)
-      cat(msg_style(msg), "\n")}
+    msg <- sprintf("Exporting %d objects\U2026", n)
+    cat(msg_style(msg), "\n")
 
     eflTools::xprt_ggplot(obj, path = path, verbose = verbose)
     eflTools::xprt_plotly(obj, path = path,verbose = verbose)
