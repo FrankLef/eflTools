@@ -2,7 +2,7 @@
 % Please edit documentation in R/log_acctg.R
 \name{log_acctg}
 \alias{log_acctg}
-\title{Log Using Accounting Rule}
+\title{Signed \code{log1p} With a Base}
 \usage{
 log_acctg(x, base = 10L)
 }
@@ -15,18 +15,17 @@ log_acctg(x, base = 10L)
 Numeric vector.
 }
 \description{
-Log using accounting rule.
+Signed \code{log1p} with a base.
 }
 \details{
-Compute the log for number whose absolute value is greater than of equal to
-the base and change the sign of the result to be the same as the input. If
-the absolute value of the number is less than the base, then divide it
-by the base.
+Compute \code{log_acctg(x, base) = sign(x) * log1p(abs(x)) / log(base)}.
+This function is the inverse of \code{exp_acctg}.
 }
 \examples{
 x <- c(-100, -10, -1, -0.1, 0, 0.1, 1, 10, 100)
 y <- log_acctg(x)
-stopifnot(identical(y, c(-2, -1, -1/10, -0.1/10, 0, 0.1/10, 1/10, 1, 2)))
+# this test if the inverse is ok
+stopifnot(isTRUE(all.equal(x, eflTools::exp_acctg(y))))
 }
 \seealso{
 exp_acctg

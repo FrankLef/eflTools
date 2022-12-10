@@ -2,7 +2,7 @@
 % Please edit documentation in R/log_acctg.R
 \name{exp_acctg}
 \alias{exp_acctg}
-\title{Exponentiation Using Accounting Rule}
+\title{Signed Exponentiation With a Base}
 \usage{
 exp_acctg(x, base = 10L)
 }
@@ -15,18 +15,17 @@ exp_acctg(x, base = 10L)
 Numeric vector.
 }
 \description{
-Exponentiation using accounting rule.
+Signed exponentiation With a base.
 }
 \details{
-Exponentiate the number whose absolute value is greater than of equal to
-the base and change the sign of the result to be the sae as the input. If
-the absolute value of the number is less than the base, then multiply it
-by the base. This function is the inverse of \code{log_acctg}.
+Compute \code{exp_acctg(x, base) = sign(x) * (base ^ abs(x) - 1)}.
+This function is the inverse of \code{log_acctg}.
 }
 \examples{
 x <- c(-2, -1, -1/10, -0.1/10, 0, 0.1/10, 1/10, 1, 2)
 y <- exp_acctg(x)
-stopifnot(identical(y, c(-100, -10, -1, -0.1, 0, 0.1, 1, 10, 100)))
+# this test if the inverse is ok
+stopifnot(isTRUE(all.equal(x, eflTools::log_acctg(y))))
 }
 \seealso{
 log_acctg

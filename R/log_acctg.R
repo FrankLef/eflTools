@@ -1,11 +1,9 @@
-#' Log Using Accounting Rule
+#' Signed \code{log1p} With a Base
 #'
-#' Log using accounting rule.
+#' Signed \code{log1p} with a base.
 #'
-#' Compute the log for number whose absolute value is greater than of equal to
-#' the base and change the sign of the result to be the same as the input. If
-#' the absolute value of the number is less than the base, then divide it
-#' by the base.
+#' Compute \code{log_acctg(x, base) = sign(x) * log1p(abs(x)) / log(base)}.
+#' This function is the inverse of \code{exp_acctg}.
 #'
 #' @param x Numerical vector.
 #' @param base Positive number >= 2. Default value is 10.
@@ -18,23 +16,21 @@
 #' @examples
 #' x <- c(-100, -10, -1, -0.1, 0, 0.1, 1, 10, 100)
 #' y <- log_acctg(x)
-#' stopifnot(identical(y, c(-2, -1, -1/10, -0.1/10, 0, 0.1/10, 1/10, 1, 2)))
+#' # this test if the inverse is ok
+#' stopifnot(isTRUE(all.equal(x, eflTools::exp_acctg(y))))
 log_acctg <- function(x, base = 10L) {
   checkmate::assert_numeric(x)
   checkmate::assert_number(base, lower = 2, finite = TRUE)
 
-  y <- abs(x)
-  ifelse(y >= base, sign(x) * log(y, base = base), x / base)
+  sign(x) * log1p(abs(x)) / log(base)
 }
 
-#' Exponentiation Using Accounting Rule
+#' Signed Exponentiation With a Base
 #'
-#' Exponentiation using accounting rule.
+#' Signed exponentiation With a base.
 #'
-#' Exponentiate the number whose absolute value is greater than of equal to
-#' the base and change the sign of the result to be the sae as the input. If
-#' the absolute value of the number is less than the base, then multiply it
-#' by the base. This function is the inverse of \code{log_acctg}.
+#' Compute \code{exp_acctg(x, base) = sign(x) * (base ^ abs(x) - 1)}.
+#' This function is the inverse of \code{log_acctg}.
 #'
 #' @inheritParams log_acctg
 #'
@@ -46,11 +42,11 @@ log_acctg <- function(x, base = 10L) {
 #' @examples
 #' x <- c(-2, -1, -1/10, -0.1/10, 0, 0.1/10, 1/10, 1, 2)
 #' y <- exp_acctg(x)
-#' stopifnot(identical(y, c(-100, -10, -1, -0.1, 0, 0.1, 1, 10, 100)))
+#' # this test if the inverse is ok
+#' stopifnot(isTRUE(all.equal(x, eflTools::log_acctg(y))))
 exp_acctg <- function(x, base = 10L) {
   checkmate::assert_numeric(x)
   checkmate::assert_number(base, lower = 2, finite = TRUE)
 
-  y <- abs(x)
-  ifelse(y >= 1L, sign(x) * base ^ y, x * base)
+  sign(x) * (base ^ abs(x) - 1)
 }
