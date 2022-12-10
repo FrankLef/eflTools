@@ -28,7 +28,7 @@ test_that("log_acctg & exp_acctg: NA", {
   x <- c(-100, NA_real_, -1, NA_real_, 0, 0.1, NA_real_, 10, NA_real_)
 
   out <- log_acctg(x)
-  target <- target <- sign(x) * log1p(abs(x)) / log(10)
+  target <- sign(x) * log1p(abs(x)) / log(10)
 
   expect_identical(out, target)
 
