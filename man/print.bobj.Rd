@@ -2,7 +2,7 @@
 % Please edit documentation in R/bobj.R
 \name{print.bobj}
 \alias{print.bobj}
-\title{Print a Business Object oc lass \code{bobj}}
+\title{Print a Business Object of Class \code{bobj}}
 \usage{
 \method{print}{bobj}(x, ...)
 }
@@ -15,5 +15,5 @@
 Formatted message to console.
 }
 \description{
-Print a Business Object oc lass \code{bobj}
+Print a Business Object of Class \code{bobj}
 }

@@ -77,6 +77,7 @@ validate_bobj <- function(obj) {
   checkmate::check_class(obj, "bobj")
   checkmate::check_names(x = c(all.vars(obj$formula), obj$id),
                subset.of = names(obj$data))
+  obj
 }
 
 #' Create a Business Object of class \code{bobj}
@@ -88,10 +89,9 @@ validate_bobj <- function(obj) {
 bobj <- function(data, formula, id) {
   me <- new_bobj(data = data, formula = formula, id = id)
   validate_bobj(me)
-  me
 }
 
-#' Print a Business Object oc lass \code{bobj}
+#' Print a Business Object of Class \code{bobj}
 #'
 #' @param x Object of class \emph{bobj}.
 #' @param ... Further arguments passed to or from other methods.

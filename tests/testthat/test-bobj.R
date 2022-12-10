@@ -35,7 +35,10 @@ test_that("new_bobj", {
 
 test_that("validate_bobj", {
   bobj_test <- make_bobj()
-  expect_true(validate_bobj(bobj_test$full))
+  # cat("\n", "out", "\n")
+  # print(bobj_test$full)
+  # cat("\n")
+  expect_s3_class(validate_bobj(bobj_test$full), class = "bobj")
 })
 
 test_that("bobj", {
