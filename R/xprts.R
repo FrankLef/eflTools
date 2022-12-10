@@ -259,20 +259,23 @@ xprt_all.xprts <- function(obj, path = getwd(), is_xprt = FALSE, verbose = FALSE
 
   msg_style <- cli::combine_ansi_styles(cli::col_green)
 
-  df <- xprt_classes(obj)
-  n <- nrow(df)
+  nb <- sum(lengths(obj))
 
-  if (is_xprt) {
-    msg <- sprintf("Exporting %d objects\U2026", n)
-    cat(msg_style(msg), "\n")
+  if (nb) {
+    if (is_xprt) {
+      msg <- sprintf("Exporting %d objects\U2026", nb)
+      cat(msg_style(msg), "\n")
 
-    eflTools::xprt_ggplot(obj, path = path, verbose = verbose)
-    eflTools::xprt_plotly(obj, path = path,verbose = verbose)
-    eflTools::xprt_gt(obj, path = path, verbose = verbose)
+      eflTools::xprt_ggplot(obj, path = path, verbose = verbose)
+      eflTools::xprt_plotly(obj, path = path,verbose = verbose)
+      eflTools::xprt_gt(obj, path = path, verbose = verbose)
 
-    msg <- sprintf("%d objects exported.", n)
+      msg <- sprintf("%d objects exported.", nb)
+      } else {
+      msg <- "Not exporting objects."
+      }
   } else {
-    msg <- "Not exporting objects."
+    msg <- "The export object is empty. Nothing done."
   }
   cat(msg_style(msg), "\n")
   invisible(obj)
