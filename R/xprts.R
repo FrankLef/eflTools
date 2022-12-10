@@ -18,7 +18,8 @@ new_xprts <- function() {
 #' @return Object of class \emph{xprts}.
 #' @export
 validate_xprts <- function(obj) {
-  checkmate::check_class(obj, "xprts")
+  checkmate::assert_class(obj, "xprts")
+  obj
 }
 
 

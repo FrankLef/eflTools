@@ -14,7 +14,7 @@ test_that("new_xprts", {
 
 test_that("validate_xprts", {
   xprts_test <- make_xprts()
-  expect_true(validate_xprts(xprts_test$plain))
+  expect_s3_class(validate_xprts(xprts_test$plain), class ="xprts")
 })
 
 
