@@ -103,3 +103,12 @@ test_that("xprt_all.xprts", {
   expect_identical(out, xprts_test$full)
 
 })
+
+test_that("empty xprts", {
+  # when xprts is empty, the sripct cause an error in RStudio
+
+  out <- xprts()
+  dir <- tempdir()
+  expect_output(xprt_all.xprts(out, path = dir, is_xprt = FALSE),
+                regexp = "The export object is empty. Nothing done.")
+})
