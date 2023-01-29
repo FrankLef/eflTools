@@ -6,7 +6,7 @@
 \alias{eflTools-package}
 \title{A package of tools used by FL}
 \description{
-Funcitons to facilitate the analysis performed by FL
+Functions to facilitate the analysis performed by FL
 }
 \section{eflTools functions}{
 

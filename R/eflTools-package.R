@@ -1,6 +1,6 @@
 #' A package of tools used by FL
 #'
-#' Funcitons to facilitate the analysis performed by FL
+#' Functions to facilitate the analysis performed by FL
 #'
 #' @section eflTools functions:
 #' The functions ...
