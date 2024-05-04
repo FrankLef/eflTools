@@ -17,6 +17,7 @@ Imports:
     checkmate,
     cli,
     crayon,
+    logging,
     dplyr,
     ggplot2,
     gt,

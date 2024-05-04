@@ -1,4 +1,3 @@
-
 #' Run R scripts in sequence
 #'
 #' Run R scripts in sequence
@@ -10,6 +9,8 @@
 #'
 #' @return Number of source files run.
 #' @export
+#'
+#' @import logging crayon
 #'
 #' @examples
 #' \dontrun{
@@ -33,13 +34,17 @@ run_eda <- function(dir = file.path(getwd(), "src"), pattern = "^eda.*[.]R$") {
     the_files <- sort(the_files, decreasing = FALSE)
 
     # inform user that the eda starts
-    message(sprintf("Running %d scripts:", length(the_files)))
+    msg <- sprintf("Running %d scripts:", length(the_files))
+    # message(sprintf("Running %d scripts:", length(the_files)))
+    logging::loginfo(msg)
 
     # run the script, one by one
     files_nb <- 0
     for (a_file in the_files) {
       # run the script
-      message(sprintf(" Running eda script: %s", a_file))
+      # message(sprintf(" Running eda script: %s", a_file))
+      msg <- sprintf("Running eda script: %s", a_file)
+      logging::logdebug(msg)
       # the encoding is important!!!
       source(file.path(dir, a_file), encoding = "UTF-8")
 
@@ -77,13 +82,14 @@ run_eda_msg <- function(nb) {
     w <- "scripts"
     w <- if(nb == 1) w <- "script"
     msg <- sprintf("\nSuccessfully completed %d %s\n", nb, w)
-    cat(crayon::black$bgGreen$bold(msg))
+    logging::loginfo(msg)
+    # cat(crayon::black$bgGreen$bold(msg))
     # message(crayon::black$bgGreen$bold(msg))
   } else {
     msg <- "\nNo script to process\n"
-    cat(crayon::black$bgYellow$bold(msg))
+    logging::logwarn(msg)
+    # cat(crayon::black$bgYellow$bold(msg))
   }
-
   beepr::beep(1)
 
 }
