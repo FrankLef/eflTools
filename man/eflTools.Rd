@@ -2,8 +2,8 @@
 % Please edit documentation in R/eflTools-package.R
 \docType{package}
 \name{eflTools}
-\alias{eflTools}
 \alias{eflTools-package}
+\alias{eflTools}
 \title{A package of tools used by FL}
 \description{
 Functions to facilitate the analysis performed by FL
